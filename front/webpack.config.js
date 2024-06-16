@@ -1,6 +1,10 @@
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default {
   entry: './src/index.tsx',
   output: {
     path: path.join(__dirname, 'public/js'),
@@ -9,6 +13,9 @@ module.exports = {
   resolve: {
     modules: ['node_modules'],
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),
+    },
   },
   module: {
     rules: [
@@ -51,7 +58,6 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
         use: [
           {
             loader: 'style-loader',
