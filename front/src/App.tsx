@@ -1,13 +1,14 @@
 import { FC } from 'react';
 
 import CalendarBoard from './components/CalendarBoard';
+import Navigation from './components/Navigation';
 import Providers from './Providers';
 
 const App: FC = () => {
   return (
     <>
       <Providers>
-        <h1>Calendar App</h1>
+        <Navigation />
         <CalendarBoard />
       </Providers>
     </>
