@@ -1,0 +1,8 @@
+**/.DS_Store
+
+public/*
+*.cjs
+*.json
+
+.gitignore
+.prettierignore

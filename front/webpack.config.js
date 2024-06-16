@@ -1,14 +1,14 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: './src/index.tsx',
   output: {
-    path: path.join(__dirname, "public/js"),
-    filename: "bundle.js",
+    path: path.join(__dirname, 'public/js'),
+    filename: 'bundle.js',
   },
   resolve: {
-    modules: ["node_modules"],
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    modules: ['node_modules'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -16,32 +16,32 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "ts-loader",
+          loader: 'ts-loader',
         },
       },
       {
         test: /(\.js|\.jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: [
               [
-                "@babel/preset-env",
+                '@babel/preset-env',
                 {
                   targets: {
-                    node: "current",
+                    node: 'current',
                   },
                 },
               ],
-              "@babel/preset-react",
+              '@babel/preset-react',
             ],
             plugins: [
               [
-                "babel-plugin-import",
+                'babel-plugin-import',
                 {
-                  libraryName: "@material-ui/icons",
-                  libraryDirectory: "",
+                  libraryName: '@material-ui/icons',
+                  libraryDirectory: '',
                   camel2DashComponentName: false,
                 },
               ],
@@ -54,13 +54,13 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "style-loader",
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: "[path][name]__[local]--[hash:base64:5]",
+                localIdentName: '[path][name]__[local]--[hash:base64:5]',
               },
             },
           },
