@@ -1,24 +1,12 @@
 import { FC } from 'react';
 
-import { ImageList, ImageListItem } from '@mui/material';
-import dayjs from 'dayjs';
+import { ImageList } from '@mui/material';
 
 import 'dayjs/locale/ja';
-import { CalendarContainer, elementStyle, gridStyle } from './styles';
+import { CalendarContainer, gridStyle } from './styles';
+import CalendarElement from '../CalendarElement';
 
-dayjs.locale('ja');
-const firstDay = dayjs().startOf('month');
-
-const createCalendar = (): dayjs.Dayjs[] => {
-  return Array(35)
-    .fill(0)
-    .map((_, i) => {
-      const diffFromFirstDay = i - firstDay.day();
-      const day = firstDay.add(diffFromFirstDay, 'day');
-
-      return day;
-    });
-};
+import { createCalendar } from '@/utils/calendar';
 
 const calendar = createCalendar();
 
@@ -27,9 +15,9 @@ const CalendarBoard: FC = () => {
     <CalendarContainer>
       <ImageList style={gridStyle} cols={7} gap={0}>
         {calendar.map((c) => (
-          <ImageListItem key={c.toISOString()} style={elementStyle}>
-            <span>{c.format('D')}</span>
-          </ImageListItem>
+          <CalendarElement key={c.toISOString()}>
+            {c.format('D')}
+          </CalendarElement>
         ))}
       </ImageList>
     </CalendarContainer>
