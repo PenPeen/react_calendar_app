@@ -13,3 +13,17 @@ export const createCalendar = (count: number): dayjs.Dayjs[] => {
       return day;
     });
 };
+
+export const isCurrentMonth = (day: dayjs.Dayjs) => {
+  const today = dayjs();
+  return day.month() === today.month();
+};
+
+export const isToday = (day: dayjs.Dayjs) => {
+  const today = dayjs();
+  return day.format('YYYYMMDD') === today.format('YYYYMMDD');
+};
+
+export const isFirstDay = (day: dayjs.Dayjs) => {
+  return day.date() === 1;
+};
