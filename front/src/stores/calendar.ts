@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import dayjs from 'dayjs';
 
-interface CalenderState {
+export interface CalenderState {
   year: number;
   month: number;
 }
