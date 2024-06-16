@@ -1,13 +1,31 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC } from 'react';
 
-import { ImageListItem } from '@mui/material';
+import { ImageListItem, Typography } from '@mui/material';
+import dayjs from 'dayjs';
 
-import { elementStyle } from './styles';
+import { dateStyle, elementStyle, todayStyle } from './styles';
 
-const CalendarElement: FC<PropsWithChildren> = ({ children }) => {
+import { isCurrentMonth, isFirstDay, isToday } from '@/utils/calendar';
+
+type Props = {
+  day: dayjs.Dayjs;
+};
+
+const CalendarElement: FC<Props> = ({ day }) => {
+  const format = isFirstDay(day) ? 'M月D日' : 'D';
+  const textColor = isCurrentMonth(day) ? 'textPrimary' : 'textSecondary';
+
   return (
     <ImageListItem style={elementStyle}>
-      <span>{children}</span>
+      <Typography
+        style={dateStyle}
+        color={textColor}
+        align="center"
+        variant="caption"
+        component="div"
+      >
+        <span style={isToday(day) ? todayStyle : {}}>{day.format(format)}</span>
+      </Typography>
     </ImageListItem>
   );
 };
