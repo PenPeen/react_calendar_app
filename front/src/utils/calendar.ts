@@ -1,9 +1,15 @@
 import dayjs from 'dayjs';
 
-dayjs.locale('ja');
-const firstDay = dayjs().startOf('month');
+import { CalenderState } from '@/stores';
 
-export const createCalendar = (count: number): dayjs.Dayjs[] => {
+dayjs.locale('ja');
+
+export const createCalendar = (
+  count: number,
+  calendar: CalenderState,
+): dayjs.Dayjs[] => {
+  const firstDay = getFirstDayOfMonth(calendar);
+
   return Array(count)
     .fill(0)
     .map((_, i) => {
@@ -12,6 +18,10 @@ export const createCalendar = (count: number): dayjs.Dayjs[] => {
 
       return day;
     });
+};
+
+export const getFirstDayOfMonth = ({ year, month }: CalenderState) => {
+  return dayjs(`${year}-${month}`);
 };
 
 export const isCurrentMonth = (day: dayjs.Dayjs) => {

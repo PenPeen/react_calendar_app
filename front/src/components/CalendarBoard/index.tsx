@@ -1,18 +1,22 @@
 import { FC } from 'react';
 
 import { ImageList, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 
-import 'dayjs/locale/ja';
-import { CalendarContainer, gridStyle } from './styles';
-import { days as styleDays } from './styles';
+import { CalendarContainer, gridStyle, days as styleDays } from './styles';
 import CalendarElement from '../CalendarElement';
 import { days } from '../types';
 
+import { RootState, CalenderState } from '@/stores';
 import { createCalendar } from '@/utils/calendar';
 
-const calendar = createCalendar(35);
-
 const CalendarBoard: FC = () => {
+  const currentCalendar = useSelector<RootState, CalenderState>(
+    (state) => state.calendar,
+  );
+
+  const calendar = createCalendar(35, currentCalendar);
+
   return (
     <CalendarContainer>
       <ImageList style={gridStyle} cols={7} gap={0}>
