@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { ImageListItem, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 
-import { dateStyle, elementStyle, todayStyle } from './styles';
+import { styledDate, styledElement, styledToday } from './styles';
 
 import { isCurrentMonth, isFirstDay, isToday } from '@/utils/calendar';
 
@@ -16,15 +16,17 @@ const CalendarElement: FC<Props> = ({ day }) => {
   const textColor = isCurrentMonth(day) ? 'textPrimary' : 'textSecondary';
 
   return (
-    <ImageListItem style={elementStyle}>
+    <ImageListItem style={styledElement}>
       <Typography
-        style={dateStyle}
+        style={styledDate}
         color={textColor}
         align="center"
         variant="caption"
         component="div"
       >
-        <span style={isToday(day) ? todayStyle : {}}>{day.format(format)}</span>
+        <span style={isToday(day) ? styledToday : {}}>
+          {day.format(format)}
+        </span>
       </Typography>
     </ImageListItem>
   );
