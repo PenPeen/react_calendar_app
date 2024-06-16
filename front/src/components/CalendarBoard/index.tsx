@@ -8,7 +8,7 @@ import CalendarElement from '../CalendarElement';
 
 import { createCalendar } from '@/utils/calendar';
 
-const calendar = createCalendar();
+const calendar = createCalendar(35);
 
 const CalendarBoard: FC = () => {
   return (
