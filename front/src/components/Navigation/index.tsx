@@ -4,12 +4,12 @@ import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton, Toolbar, Typography } from '@mui/material';
 
-import { StyledToolbar, StyledTypography } from './style';
+import { styledToolbar, styledTypography } from './style';
 
 const Navigation: FC = () => {
   return (
     <>
-      <Toolbar style={StyledToolbar}>
+      <Toolbar style={styledToolbar}>
         <IconButton>
           <MenuIcon />
         </IconButton>
@@ -20,7 +20,7 @@ const Navigation: FC = () => {
           alt="calendar icon"
         />
         <Typography
-          style={StyledTypography}
+          style={styledTypography}
           color="textSecondary"
           variant="h5"
           component="h1"

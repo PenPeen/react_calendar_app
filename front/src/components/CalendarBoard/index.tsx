@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { ImageList, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 
-import { CalendarContainer, gridStyle, days as styleDays } from './styles';
+import { styledContainer, styledGrid, styledDays } from './styles';
 import CalendarElement from '../CalendarElement';
 import { days } from '../types';
 
@@ -18,12 +18,12 @@ const CalendarBoard: FC = () => {
   const calendar = createCalendar(35, currentCalendar);
 
   return (
-    <CalendarContainer>
-      <ImageList style={gridStyle} cols={7} gap={0}>
+    <div style={styledContainer}>
+      <ImageList style={styledGrid} cols={7} gap={0}>
         {days.map((d, i) => (
           <li key={i}>
             <Typography
-              style={styleDays}
+              style={styledDays}
               color="textSecondary"
               align="center"
               variant="caption"
@@ -37,7 +37,7 @@ const CalendarBoard: FC = () => {
           <CalendarElement key={day.toISOString()} day={day} />
         ))}
       </ImageList>
-    </CalendarContainer>
+    </div>
   );
 };
 
