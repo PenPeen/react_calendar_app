@@ -15,4 +15,9 @@ React + Redux を使用したカレンダーアプリケーション
 
 ## Components
 
-- coming soon...
+- CalendarBoard
+- CalendarElement
+
+## ディレクトリ構成
+
+ディレクトリ構成は [bulletproof-react](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md) に準拠する形とする
