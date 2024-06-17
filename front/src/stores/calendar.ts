@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import dayjs from 'dayjs';
 
-import { formatMonth, ShiftedMonth } from '@/utils/calendar';
+import { formatMonth, shiftedMonth } from '@/utils/calendar';
 
 export interface CalendarState {
   year: number;
@@ -16,10 +16,10 @@ const calendarSlice = createSlice({
   initialState,
   reducers: {
     setNextMonth(state) {
-      Object.assign(state, ShiftedMonth(state, 1));
+      Object.assign(state, shiftedMonth(state, 1));
     },
     setPrevMonth(state) {
-      Object.assign(state, ShiftedMonth(state, -1));
+      Object.assign(state, shiftedMonth(state, -1));
     },
   },
 });

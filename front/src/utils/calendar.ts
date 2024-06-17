@@ -20,24 +20,33 @@ export const createCalendar = (
     });
 };
 
-export const getFirstDayOfMonth = ({ year, month }: CalendarState) => {
+export const getFirstDayOfMonth = ({
+  year,
+  month,
+}: CalendarState): dayjs.Dayjs => {
   return dayjs(`${year}-${month}`);
 };
 
-export const isCurrentMonth = (day: dayjs.Dayjs, currentMonth: number) => {
+export const isCurrentMonth = (
+  day: dayjs.Dayjs,
+  currentMonth: number,
+): boolean => {
   return day.month() + 1 === currentMonth;
 };
 
-export const isToday = (day: dayjs.Dayjs) => {
+export const isToday = (day: dayjs.Dayjs): boolean => {
   const today = dayjs();
   return day.format('YYYYMMDD') === today.format('YYYYMMDD');
 };
 
-export const isFirstDay = (day: dayjs.Dayjs) => {
+export const isFirstDay = (day: dayjs.Dayjs): boolean => {
   return day.date() === 1;
 };
 
-export const ShiftedMonth = (calendar: CalendarState, diff: number) => {
+export const shiftedMonth = (
+  calendar: CalendarState,
+  diff: number,
+): CalendarState => {
   const date = getFirstDayOfMonth(calendar).add(diff, 'month');
   return formatMonth(date);
 };
