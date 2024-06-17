@@ -7,11 +7,11 @@ import { styledContainer, styledGrid, styledDays } from './styles';
 import CalendarElement from '../CalendarElement';
 import { days } from '../types';
 
-import { RootState, CalenderState } from '@/stores';
+import { RootState, CalendarState } from '@/stores';
 import { createCalendar } from '@/utils/calendar';
 
 const CalendarBoard: FC = () => {
-  const currentCalendar = useSelector<RootState, CalenderState>(
+  const currentCalendar = useSelector<RootState, CalendarState>(
     (state) => state.calendar,
   );
 

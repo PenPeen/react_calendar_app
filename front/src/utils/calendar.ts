@@ -1,12 +1,12 @@
 import dayjs from 'dayjs';
 
-import { CalenderState } from '@/stores';
+import { CalendarState } from '@/stores';
 
 dayjs.locale('ja');
 
 export const createCalendar = (
   count: number,
-  calendar: CalenderState,
+  calendar: CalendarState,
 ): dayjs.Dayjs[] => {
   const firstDay = getFirstDayOfMonth(calendar);
 
@@ -20,7 +20,7 @@ export const createCalendar = (
     });
 };
 
-export const getFirstDayOfMonth = ({ year, month }: CalenderState) => {
+export const getFirstDayOfMonth = ({ year, month }: CalendarState) => {
   return dayjs(`${year}-${month}`);
 };
 
@@ -37,3 +37,13 @@ export const isToday = (day: dayjs.Dayjs) => {
 export const isFirstDay = (day: dayjs.Dayjs) => {
   return day.date() === 1;
 };
+
+export const ShiftedMonth = (calendar: CalendarState, diff: number) => {
+  const date = getFirstDayOfMonth(calendar).add(diff, 'month');
+  return formatMonth(date);
+};
+
+export const formatMonth = (date: dayjs.Dayjs): CalendarState => ({
+  month: date.month() + 1,
+  year: date.year(),
+});

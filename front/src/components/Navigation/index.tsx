@@ -3,10 +3,19 @@ import { FC } from 'react';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton, Toolbar, Typography } from '@mui/material';
+import { useDispatch } from 'react-redux';
 
 import { styledToolbar, styledTypography } from './style';
 
+import calendarSlice from '@/stores/calendar';
+
+const { setNextMonth, setPrevMonth } = calendarSlice.actions;
+
 const Navigation: FC = () => {
+  const dispatch = useDispatch();
+  const handlePrevMonth = () => dispatch(setPrevMonth());
+  const handleNextMonth = () => dispatch(setNextMonth());
+
   return (
     <>
       <Toolbar style={styledToolbar}>
@@ -27,10 +36,10 @@ const Navigation: FC = () => {
         >
           カレンダー
         </Typography>
-        <IconButton size="small">
+        <IconButton size="small" onClick={handlePrevMonth}>
           <ArrowBackIos />
         </IconButton>
-        <IconButton size="small">
+        <IconButton size="small" onClick={handleNextMonth}>
           <ArrowForwardIos />
         </IconButton>
       </Toolbar>

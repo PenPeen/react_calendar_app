@@ -1,24 +1,25 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import dayjs from 'dayjs';
 
-export interface CalenderState {
+import { formatMonth, ShiftedMonth } from '@/utils/calendar';
+
+export interface CalendarState {
   year: number;
   month: number;
 }
 
 const day = dayjs();
-
-const initialState: CalenderState = {
-  year: day.year(),
-  month: day.month() + 1,
-};
+const initialState = formatMonth(day);
 
 const calendarSlice = createSlice({
   name: 'calendar',
   initialState,
   reducers: {
-    set_month(state, action: PayloadAction<number>) {
-      state.month = action.payload;
+    setNextMonth(state) {
+      Object.assign(state, ShiftedMonth(state, 1));
+    },
+    setPrevMonth(state) {
+      Object.assign(state, ShiftedMonth(state, -1));
     },
   },
 });
