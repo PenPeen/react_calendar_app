@@ -24,9 +24,8 @@ export const getFirstDayOfMonth = ({ year, month }: CalendarState) => {
   return dayjs(`${year}-${month}`);
 };
 
-export const isCurrentMonth = (day: dayjs.Dayjs) => {
-  const today = dayjs();
-  return day.month() === today.month();
+export const isCurrentMonth = (day: dayjs.Dayjs, currentMonth: number) => {
+  return day.month() + 1 === currentMonth;
 };
 
 export const isToday = (day: dayjs.Dayjs) => {
