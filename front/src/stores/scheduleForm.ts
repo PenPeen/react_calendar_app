@@ -7,7 +7,7 @@ interface FormInput {
   location: string;
 }
 
-interface ScheduleState {
+export interface ScheduleState {
   form: FormInput;
   isDialogOpen: boolean;
 }
