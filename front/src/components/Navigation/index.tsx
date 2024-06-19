@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { IconButton, TextField, Toolbar, Typography } from '@mui/material';
+import { IconButton, Toolbar, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
@@ -45,18 +45,14 @@ const Navigation: FC = () => {
         <IconButton size="small" onClick={handleNextMonth}>
           <ArrowForwardIos />
         </IconButton>
-        {/* FIXME: カレンダーで別の月を選択すると画面がチラつく */}
-        <DatePicker
-          value={calendarDate}
-          onChange={handleSetMonth}
-          format="YYYY年 M月"
-          views={['month']}
-          slots={{
-            textField: (textFieldProps) => (
-              <TextField {...textFieldProps} style={styledDatePicker} />
-            ),
-          }}
-        />
+        <div style={styledDatePicker}>
+          <DatePicker
+            value={calendarDate}
+            onChange={handleSetMonth}
+            format="YYYY年 M月"
+            closeOnSelect={true}
+          />
+        </div>
       </Toolbar>
     </>
   );
