@@ -50,7 +50,7 @@ const Navigation: FC = () => {
           value={calendarDate}
           onChange={handleSetMonth}
           format="YYYY年 M月"
-          views={['month', 'year']}
+          views={['month']}
           slots={{
             textField: (textFieldProps) => (
               <TextField {...textFieldProps} style={styledDatePicker} />
