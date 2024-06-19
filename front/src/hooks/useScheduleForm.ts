@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { scheduleFormSlice } from '@/stores/scheduleForm';
 
 // eslint-disable-next-line
-const { setValue, openDialog, closeDialog } = scheduleFormSlice.actions;
+const { openDialog, closeDialog } = scheduleFormSlice.actions;
 
 export const useScheduleForm = () => {
   const dispatch = useDispatch();
