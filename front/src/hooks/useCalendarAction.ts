@@ -1,17 +1,12 @@
 import dayjs from 'dayjs';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { RootState } from '@/stores';
-import calendarSlice, { CalendarState } from '@/stores/calendar';
+import calendarSlice from '@/stores/calendar';
 import { formatMonth } from '@/utils/calendar';
 
 const { setNextMonth, setPrevMonth, setDate } = calendarSlice.actions;
 
 export const useCalendar = () => {
-  const calendar = useSelector<RootState, CalendarState>(
-    (state) => state.calendar,
-  );
-
   const dispatch = useDispatch();
   const handlePrevMonth = () => dispatch(setPrevMonth());
   const handleNextMonth = () => dispatch(setNextMonth());
@@ -25,6 +20,5 @@ export const useCalendar = () => {
     handlePrevMonth,
     handleNextMonth,
     handleSetMonth,
-    calendar,
   };
 };
