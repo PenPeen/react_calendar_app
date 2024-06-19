@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import calendarSlice from './calendar';
+import { scheduleFormSlice } from './scheduleForm';
 
 const store = configureStore({
   reducer: {
     calendar: calendarSlice.reducer,
+    scheduleForn: scheduleFormSlice.reducer,
   },
 });
 
