@@ -7,10 +7,13 @@ import { styledContainer, styledGrid, styledDays } from './styles';
 import CalendarElement from '../CalendarElement';
 import { days } from '../types';
 
+import { useScheduleForm } from '@/hooks/useScheduleForm';
 import { RootState, CalendarState } from '@/stores';
 import { createCalendar } from '@/utils/calendar';
 
 const CalendarBoard: FC = () => {
+  const { handleOpenDialog } = useScheduleForm();
+
   const currentCalendar = useSelector<RootState, CalendarState>(
     (state) => state.calendar,
   );
@@ -34,7 +37,10 @@ const CalendarBoard: FC = () => {
           </li>
         ))}
         {calendar.map((day) => (
-          <CalendarElement key={day.toISOString()} day={day} />
+          // eslint-disable-next-line
+          <div key={day.toISOString()} onClick={handleOpenDialog}>
+            <CalendarElement day={day} />
+          </div>
         ))}
       </ImageList>
     </div>

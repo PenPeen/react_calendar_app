@@ -6,7 +6,7 @@ import { scheduleFormSlice } from './scheduleForm';
 const store = configureStore({
   reducer: {
     calendar: calendarSlice.reducer,
-    scheduleForn: scheduleFormSlice.reducer,
+    scheduleForm: scheduleFormSlice.reducer,
   },
 });
 
