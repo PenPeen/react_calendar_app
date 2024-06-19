@@ -5,14 +5,18 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton, TextField, Toolbar, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
+import { useSelector } from 'react-redux';
 
 import { styledDatePicker, styledToolbar, styledTypography } from './style';
 
-import { useCalendar } from '@/hooks/useCalendar';
+import { useCalendar } from '@/hooks/useCalendarAction';
+import { CalendarState, RootState } from '@/stores';
 
 const Navigation: FC = () => {
-  const { handlePrevMonth, handleNextMonth, handleSetMonth, calendar } =
-    useCalendar();
+  const { handlePrevMonth, handleNextMonth, handleSetMonth } = useCalendar();
+  const calendar = useSelector<RootState, CalendarState>(
+    (state) => state.calendar,
+  );
   const calendarDate = dayjs(new Date(calendar.year, calendar.month - 1));
 
   return (
@@ -46,6 +50,7 @@ const Navigation: FC = () => {
           value={calendarDate}
           onChange={handleSetMonth}
           format="YYYY年 M月"
+          views={['month', 'year']}
           slots={{
             textField: (textFieldProps) => (
               <TextField {...textFieldProps} style={styledDatePicker} />
