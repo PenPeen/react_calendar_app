@@ -2,7 +2,6 @@ import { useDispatch } from 'react-redux';
 
 import { scheduleFormSlice } from '@/stores/scheduleForm';
 
-// eslint-disable-next-line
 const { openDialog, closeDialog } = scheduleFormSlice.actions;
 
 export const useScheduleForm = () => {

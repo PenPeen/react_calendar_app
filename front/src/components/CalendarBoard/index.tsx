@@ -37,7 +37,6 @@ const CalendarBoard: FC = () => {
           </li>
         ))}
         {calendar.map((day) => (
-          // eslint-disable-next-line
           <div key={day.toISOString()} onClick={handleOpenDialog}>
             <CalendarElement day={day} />
           </div>
