@@ -1,7 +1,17 @@
 import { FC } from 'react';
 
-import { Dialog, DialogContent } from '@mui/material';
+import { LocationOnOutlined, NotesOutlined } from '@mui/icons-material';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Grid,
+  TextField,
+} from '@mui/material';
 import { useSelector } from 'react-redux';
+
+import { StyledInput, styledTextField } from './styles';
 
 import { useScheduleForm } from '@/hooks/useScheduleForm';
 import { RootState } from '@/stores';
@@ -21,7 +31,48 @@ const AddScheduleDialog: FC = () => {
       maxWidth="xs"
       fullWidth
     >
-      <DialogContent>予定登録ダイアログ （tentative）</DialogContent>
+      <DialogContent>
+        <StyledInput placeholder="タイトルと日時を追加" autoFocus />
+        <Grid
+          container
+          spacing={1}
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Grid item>
+            <LocationOnOutlined />
+          </Grid>
+          <Grid item xs={10}>
+            <TextField
+              style={styledTextField}
+              fullWidth
+              placeholder="場所を追加"
+            />
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          spacing={1}
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Grid item>
+            <NotesOutlined />
+          </Grid>
+          <Grid item xs={10}>
+            <TextField
+              style={styledTextField}
+              fullWidth
+              placeholder="説明を追加"
+            />
+          </Grid>
+        </Grid>
+      </DialogContent>
+      <DialogActions>
+        <Button color="primary" variant="outlined">
+          保存
+        </Button>
+      </DialogActions>
     </Dialog>
   );
 };
