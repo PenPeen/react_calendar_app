@@ -8,10 +8,12 @@ import { useSelector } from 'react-redux';
 import { styledDate, styledElement, styledToday } from './styles';
 
 import { RootState } from '@/stores';
+import { ScheduleItem } from '@/types/schedule';
 import { isCurrentMonth, isFirstDay, isToday } from '@/utils/calendar';
 
 type Props = {
   day: dayjs.Dayjs;
+  schedules: ScheduleItem[];
 };
 
 const CalendarElement: FC<Props> = ({ day }) => {

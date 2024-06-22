@@ -9,7 +9,8 @@ import { days } from '../types';
 
 import { useScheduleForm } from '@/hooks/useScheduleForm';
 import { RootState, CalendarState } from '@/stores';
-import { createCalendar } from '@/utils/calendar';
+import { ScheduleItem } from '@/types/schedule';
+import { createCalendar, mapSchedulesToDate } from '@/utils/calendar';
 
 const CalendarBoard: FC = () => {
   const { handleOpenDialog } = useScheduleForm();
@@ -17,8 +18,14 @@ const CalendarBoard: FC = () => {
   const currentCalendar = useSelector<RootState, CalendarState>(
     (state) => state.calendar,
   );
+  const schedules = useSelector<RootState, ScheduleItem[]>(
+    (state) => state.schedules.items,
+  );
 
-  const calendar = createCalendar(35, currentCalendar);
+  const calendar = mapSchedulesToDate(
+    createCalendar(35, currentCalendar),
+    schedules,
+  );
 
   return (
     <div style={styledContainer}>
@@ -36,12 +43,12 @@ const CalendarBoard: FC = () => {
             </Typography>
           </li>
         ))}
-        {calendar.map((day) => (
+        {calendar.map(({ date, schedules }) => (
           <div
-            key={day.toISOString()}
-            onClick={() => handleOpenDialog(day.toISOString())}
+            key={date.toISOString()}
+            onClick={() => handleOpenDialog(date.toISOString())}
           >
-            <CalendarElement day={day} />
+            <CalendarElement day={date} schedules={schedules} />
           </div>
         ))}
       </ImageList>
