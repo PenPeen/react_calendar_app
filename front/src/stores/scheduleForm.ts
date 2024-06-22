@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-interface FormInput {
+export interface FormInput {
   title: string;
   description: string;
   date: string | null;
@@ -26,8 +26,8 @@ export const scheduleFormSlice = createSlice({
   name: 'scheduleForm',
   initialState,
   reducers: {
-    setValue(state, action: PayloadAction<FormInput>) {
-      state.form = action.payload;
+    setValue(state, action: PayloadAction<object>) {
+      state.form = { ...state.form, ...action.payload };
     },
     openDialog(state) {
       state.isDialogOpen = true;

@@ -22,7 +22,7 @@ const AddScheduleDialog: FC = () => {
     (state) => state.scheduleForm,
   );
 
-  const { handleCloseDialog } = useScheduleForm();
+  const { handleCloseDialog, handleSetValue } = useScheduleForm();
 
   return (
     <Dialog
@@ -32,7 +32,12 @@ const AddScheduleDialog: FC = () => {
       fullWidth
     >
       <DialogContent>
-        <StyledInput placeholder="タイトルと日時を追加" autoFocus />
+        <StyledInput
+          value={scheduleForm.form.title}
+          onChange={(e) => handleSetValue('title', e.target.value)}
+          placeholder="タイトルと日時を追加"
+          autoFocus
+        />
         <Grid
           container
           spacing={1}
@@ -44,6 +49,8 @@ const AddScheduleDialog: FC = () => {
           </Grid>
           <Grid item xs={10}>
             <TextField
+              value={scheduleForm.form.location}
+              onChange={(e) => handleSetValue('location', e.target.value)}
               style={styledTextField}
               fullWidth
               placeholder="場所を追加"
@@ -61,6 +68,8 @@ const AddScheduleDialog: FC = () => {
           </Grid>
           <Grid item xs={10}>
             <TextField
+              value={scheduleForm.form.description}
+              onChange={(e) => handleSetValue('description', e.target.value)}
               style={styledTextField}
               fullWidth
               placeholder="説明を追加"

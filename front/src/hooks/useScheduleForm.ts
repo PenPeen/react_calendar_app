@@ -1,12 +1,15 @@
 import { useDispatch } from 'react-redux';
 
-import { scheduleFormSlice } from '@/stores/scheduleForm';
+import { FormInput, scheduleFormSlice } from '@/stores/scheduleForm';
 
-const { openDialog, closeDialog } = scheduleFormSlice.actions;
+const { openDialog, closeDialog, setValue } = scheduleFormSlice.actions;
 
 export const useScheduleForm = () => {
   const dispatch = useDispatch();
-  const handleSetValue = () => console.log('TODO');
+  const handleSetValue = (field: keyof FormInput, value: string) => {
+    dispatch(setValue({ [field]: value }));
+  };
+
   const handleOpenDialog = () => dispatch(openDialog());
   const handleCloseDialog = () => dispatch(closeDialog());
 
