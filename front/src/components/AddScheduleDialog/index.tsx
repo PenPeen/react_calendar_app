@@ -29,7 +29,8 @@ const AddScheduleDialog: FC = () => {
     (state) => state.scheduleForm,
   );
 
-  const { handleCloseDialog, handleSetValue } = useScheduleForm();
+  const { handleCloseDialog, handleSetValue, handleStoreForm } =
+    useScheduleForm();
 
   return (
     <Dialog
@@ -111,7 +112,11 @@ const AddScheduleDialog: FC = () => {
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button color="primary" variant="outlined">
+        <Button
+          color="primary"
+          variant="outlined"
+          onClick={() => handleStoreForm(scheduleForm.form)}
+        >
           保存
         </Button>
       </DialogActions>
