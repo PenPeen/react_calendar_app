@@ -17,8 +17,7 @@ const initialState: ScheduleState = {
   form: {
     title: '',
     description: '',
-    // TODO: 本日の日付を仮で初期値指定
-    date: dayjs().toISOString(),
+    date: '',
     location: '',
   },
   isDialogOpen: false,
@@ -31,8 +30,9 @@ export const scheduleFormSlice = createSlice({
     setValue(state, action: PayloadAction<object>) {
       state.form = { ...state.form, ...action.payload };
     },
-    openDialog(state) {
+    openDialog(state, action: PayloadAction<string>) {
       state.isDialogOpen = true;
+      state.form = { ...state.form, date: action.payload };
     },
     closeDialog(state) {
       state.isDialogOpen = false;
