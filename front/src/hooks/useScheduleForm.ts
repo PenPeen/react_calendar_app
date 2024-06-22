@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 
-import { Schedule, scheduleFormSlice } from '@/stores/scheduleForm';
+import { scheduleFormSlice } from '@/stores/scheduleForm';
+import { Schedule } from '@/types/schedule';
 
 const { openDialog, closeDialog, setValue } = scheduleFormSlice.actions;
 
