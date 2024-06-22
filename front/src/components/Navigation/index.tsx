@@ -6,7 +6,12 @@ import { IconButton, Toolbar, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 
-import { StyledDatePicker, styledToolbar, styledTypography } from './style';
+import {
+  StyledDatePicker,
+  styledAppImage,
+  styledToolbar,
+  styledTypography,
+} from './style';
 
 import { useCalendar } from '@/hooks/useCalendarAction';
 import { CalendarState, RootState } from '@/stores';
@@ -49,6 +54,13 @@ const Navigation: FC = () => {
           onChange={handleSetMonth}
           format="YYYY年 M月"
           closeOnSelect={true}
+        />
+        <img
+          src="/images/myapp.png"
+          width="75"
+          height="75"
+          alt="penpeen app icon"
+          style={styledAppImage}
         />
       </Toolbar>
     </>

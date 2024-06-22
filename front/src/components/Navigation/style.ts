@@ -1,9 +1,13 @@
 import { DatePicker } from '@mui/x-date-pickers';
 import styled from 'styled-components';
 
-export const styledToolbar = { padding: '0' };
+export const styledToolbar = {
+  padding: '0',
+};
 
-export const styledTypography = { margin: '0 30px 0 10px' };
+export const styledTypography = {
+  margin: '0 30px 0 10px',
+};
 
 export const StyledDatePicker = styled(DatePicker)`
   width: 175px;
@@ -16,3 +20,7 @@ export const StyledDatePicker = styled(DatePicker)`
     border-radius: 0;
   }
 `;
+
+export const styledAppImage = {
+  marginLeft: 'auto',
+};
