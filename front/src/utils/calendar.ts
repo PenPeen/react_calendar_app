@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 
 import { CalendarState } from '@/stores';
+import { ScheduleItem } from '@/types/schedule';
 
 dayjs.locale('ja');
 
@@ -43,6 +44,11 @@ export const isFirstDay = (day: dayjs.Dayjs): boolean => {
   return day.date() === 1;
 };
 
+export const isSameDay = (d1: dayjs.Dayjs, d2: dayjs.Dayjs) => {
+  const format = 'YYYYMMDD';
+  return d1.format(format) === d2.format(format);
+};
+
 export const shiftedMonth = (
   calendar: CalendarState,
   diff: number,
@@ -55,3 +61,15 @@ export const formatMonth = (date: dayjs.Dayjs): CalendarState => ({
   month: date.month() + 1,
   year: date.year(),
 });
+
+export const mapSchedulesToDate = (
+  calendar: dayjs.Dayjs[],
+  schedules: ScheduleItem[],
+) => {
+  return calendar.map((date) => ({
+    date,
+    schedules: schedules.filter((schedule) =>
+      isSameDay(dayjs(schedule.date), date),
+    ),
+  }));
+};
