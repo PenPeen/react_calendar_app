@@ -4,3 +4,6 @@ export interface Schedule {
   date: string;
   location: string;
 }
+export interface ScheduleItem extends Schedule {
+  id: number;
+}
