@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import {
   AccessTime,
+  Close,
   LocationOnOutlined,
   NotesOutlined,
 } from '@mui/icons-material';
@@ -11,6 +12,7 @@ import {
   DialogActions,
   DialogContent,
   Grid,
+  IconButton,
   TextField,
 } from '@mui/material';
 import dayjs from 'dayjs';
@@ -36,11 +38,16 @@ const AddScheduleDialog: FC = () => {
       maxWidth="xs"
       fullWidth
     >
+      <DialogActions>
+        <IconButton onClick={handleCloseDialog} size="small">
+          <Close />
+        </IconButton>
+      </DialogActions>
       <DialogContent>
         <StyledInput
           value={scheduleForm.form.title}
           onChange={(e) => handleSetValue('title', e.target.value)}
-          placeholder="タイトルと日時を追加"
+          placeholder="タイトルを追加"
           autoFocus
         />
         <Grid
