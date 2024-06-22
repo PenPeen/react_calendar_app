@@ -1,9 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import dayjs from 'dayjs';
 
 export interface FormInput {
   title: string;
   description: string;
-  date: string | null;
+  date: string;
   location: string;
 }
 
@@ -16,7 +17,8 @@ const initialState: ScheduleState = {
   form: {
     title: '',
     description: '',
-    date: null,
+    // TODO: 本日の日付を仮で初期値指定
+    date: dayjs().toISOString(),
     location: '',
   },
   isDialogOpen: false,

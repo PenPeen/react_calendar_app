@@ -13,6 +13,7 @@ import {
   Grid,
   TextField,
 } from '@mui/material';
+import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 
 import { StyledDatePicker, StyledInput, styledTextField } from './styles';
@@ -52,7 +53,15 @@ const AddScheduleDialog: FC = () => {
             <AccessTime />
           </Grid>
           <Grid item xs={10}>
-            <StyledDatePicker format="YYYY年M月D日" />
+            <StyledDatePicker
+              format="YYYY年M月D日"
+              value={dayjs(scheduleForm.form.date)}
+              onChange={(e) => {
+                if (e && e.isValid()) {
+                  handleSetValue('date', e.toISOString());
+                }
+              }}
+            />
           </Grid>
         </Grid>
         <Grid
