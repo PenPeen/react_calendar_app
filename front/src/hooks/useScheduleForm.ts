@@ -10,7 +10,7 @@ export const useScheduleForm = () => {
   const handleSetValue = (field: keyof FormInput, value: string) => {
     dispatch(setValue({ [field]: value }));
   };
-  const handleOpenDialog = () => dispatch(openDialog());
+  const handleOpenDialog = (day: string) => dispatch(openDialog(day));
   const handleCloseDialog = () => dispatch(closeDialog());
 
   return {

@@ -37,7 +37,10 @@ const CalendarBoard: FC = () => {
           </li>
         ))}
         {calendar.map((day) => (
-          <div key={day.toISOString()} onClick={handleOpenDialog}>
+          <div
+            key={day.toISOString()}
+            onClick={() => handleOpenDialog(day.toISOString())}
+          >
             <CalendarElement day={day} />
           </div>
         ))}
