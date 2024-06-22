@@ -1,6 +1,10 @@
 import { FC } from 'react';
 
-import { LocationOnOutlined, NotesOutlined } from '@mui/icons-material';
+import {
+  AccessTime,
+  LocationOnOutlined,
+  NotesOutlined,
+} from '@mui/icons-material';
 import {
   Button,
   Dialog,
@@ -9,9 +13,10 @@ import {
   Grid,
   TextField,
 } from '@mui/material';
+import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 
-import { StyledInput, styledTextField } from './styles';
+import { StyledDatePicker, StyledInput, styledTextField } from './styles';
 
 import { useScheduleForm } from '@/hooks/useScheduleForm';
 import { RootState } from '@/stores';
@@ -38,6 +43,27 @@ const AddScheduleDialog: FC = () => {
           placeholder="タイトルと日時を追加"
           autoFocus
         />
+        <Grid
+          container
+          spacing={1}
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Grid item>
+            <AccessTime />
+          </Grid>
+          <Grid item xs={10}>
+            <StyledDatePicker
+              format="YYYY年M月D日"
+              value={dayjs(scheduleForm.form.date)}
+              onChange={(e) => {
+                if (e && e.isValid()) {
+                  handleSetValue('date', e.toISOString());
+                }
+              }}
+            />
+          </Grid>
+        </Grid>
         <Grid
           container
           spacing={1}
