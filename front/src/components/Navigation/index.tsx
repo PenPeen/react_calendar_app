@@ -3,11 +3,10 @@ import { FC } from 'react';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton, Toolbar, Typography } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 
-import { styledDatePicker, styledToolbar, styledTypography } from './style';
+import { StyledDatePicker, styledToolbar, styledTypography } from './style';
 
 import { useCalendar } from '@/hooks/useCalendarAction';
 import { CalendarState, RootState } from '@/stores';
@@ -45,14 +44,12 @@ const Navigation: FC = () => {
         <IconButton size="small" onClick={handleNextMonth}>
           <ArrowForwardIos />
         </IconButton>
-        <div style={styledDatePicker}>
-          <DatePicker
-            value={calendarDate}
-            onChange={handleSetMonth}
-            format="YYYY年 M月"
-            closeOnSelect={true}
-          />
-        </div>
+        <StyledDatePicker
+          value={calendarDate}
+          onChange={handleSetMonth}
+          format="YYYY年 M月"
+          closeOnSelect={true}
+        />
       </Toolbar>
     </>
   );
