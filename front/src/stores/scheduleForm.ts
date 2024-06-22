@@ -26,7 +26,7 @@ export const scheduleFormSlice = createSlice({
     },
     openDialog(state, action: PayloadAction<string>) {
       state.isDialogOpen = true;
-      state.form = { ...state.form, date: action.payload };
+      state.form = { ...initialState.form, date: action.payload };
     },
     closeDialog(state) {
       state.isDialogOpen = false;

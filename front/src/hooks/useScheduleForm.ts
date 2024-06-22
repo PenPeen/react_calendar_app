@@ -1,9 +1,11 @@
 import { useDispatch } from 'react-redux';
 
 import { scheduleFormSlice } from '@/stores/scheduleForm';
+import { schedulesSlice } from '@/stores/schedules';
 import { Schedule } from '@/types/schedule';
 
 const { openDialog, closeDialog, setValue } = scheduleFormSlice.actions;
+const { addSchedule } = schedulesSlice.actions;
 
 export const useScheduleForm = () => {
   const dispatch = useDispatch();
@@ -13,10 +15,15 @@ export const useScheduleForm = () => {
   };
   const handleOpenDialog = (day: string) => dispatch(openDialog(day));
   const handleCloseDialog = () => dispatch(closeDialog());
+  const handleStoreForm = (schedule: Schedule) => {
+    dispatch(addSchedule(schedule));
+    dispatch(closeDialog());
+  };
 
   return {
     handleOpenDialog,
     handleCloseDialog,
     handleSetValue,
+    handleStoreForm,
   };
 };
