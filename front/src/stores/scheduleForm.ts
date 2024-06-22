@@ -1,14 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-export interface FormInput {
-  title: string;
-  description: string;
-  date: string;
-  location: string;
-}
+import { Schedule } from '@/types/schedule';
 
 export interface ScheduleState {
-  form: FormInput;
+  form: Schedule;
   isDialogOpen: boolean;
 }
 
