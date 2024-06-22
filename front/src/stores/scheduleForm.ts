@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import dayjs from 'dayjs';
 
 export interface FormInput {
   title: string;
