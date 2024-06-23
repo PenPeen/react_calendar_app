@@ -7,7 +7,7 @@ import { Schedule } from '@/types/schedule';
 const { openDialog, closeDialog, setValue } = scheduleFormSlice.actions;
 const { addSchedule } = schedulesSlice.actions;
 
-export const useScheduleForm = () => {
+export const useScheduleFormAction = () => {
   const dispatch = useDispatch();
 
   const handleSetValue = (field: keyof Schedule, value: string) => {

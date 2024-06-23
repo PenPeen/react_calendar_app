@@ -5,7 +5,7 @@ import { ScheduleItem } from '@/types/schedule';
 
 const { openDialog, closeDialog, setCurrent } = currentScheduleSlice.actions;
 
-export const useCurrentSchedule = () => {
+export const useCurrentScheduleAction = () => {
   const dispatch = useDispatch();
 
   const handleSetCurrent = (current: ScheduleItem) => {

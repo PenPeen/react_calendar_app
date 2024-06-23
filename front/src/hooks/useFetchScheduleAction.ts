@@ -7,7 +7,7 @@ import { schedulesSlice } from '@/stores/schedules';
 import { get } from '@/utils/api';
 const { setLoading, fetchSchedule } = schedulesSlice.actions;
 
-export const useFetchSchedule = (currentCalendar: CalendarState) => {
+export const useFetchScheduleAction = (currentCalendar: CalendarState) => {
   const dispatch = useDispatch();
 
   useEffect(() => {

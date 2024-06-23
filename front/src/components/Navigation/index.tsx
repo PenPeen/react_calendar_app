@@ -4,7 +4,6 @@ import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton, Toolbar, Typography } from '@mui/material';
 import dayjs from 'dayjs';
-import { useSelector } from 'react-redux';
 
 import {
   StyledDatePicker,
@@ -14,13 +13,11 @@ import {
 } from './style';
 
 import { useCalendar } from '@/hooks/useCalendarAction';
-import { CalendarState, RootState } from '@/stores';
+import { useCurrentCalendarState } from '@/hooks/useCurrentCalendarState';
 
 const Navigation: FC = () => {
   const { handlePrevMonth, handleNextMonth, handleSetMonth } = useCalendar();
-  const calendar = useSelector<RootState, CalendarState>(
-    (state) => state.calendar,
-  );
+  const calendar = useCurrentCalendarState();
   const calendarDate = dayjs(new Date(calendar.year, calendar.month - 1));
 
   return (

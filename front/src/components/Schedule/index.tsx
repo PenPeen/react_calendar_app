@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { StyleProps, StyledSchedule } from './styles';
 
-import { useCurrentSchedule } from '@/hooks/useCurrentSchedule';
+import { useCurrentScheduleAction } from '@/hooks/useCurrentScheduleAction';
 import { ScheduleItem } from '@/types';
 
 type Props = {
@@ -18,7 +18,7 @@ const Schedule: FC<Props> = ({ schedule, custom }) => {
     handleOpenDialog();
   };
 
-  const { handleSetCurrent, handleOpenDialog } = useCurrentSchedule();
+  const { handleSetCurrent, handleOpenDialog } = useCurrentScheduleAction();
 
   return (
     <StyledSchedule {...custom} onClick={(e) => handleScheduleClick(e)}>
