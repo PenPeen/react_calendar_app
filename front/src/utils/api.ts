@@ -26,3 +26,10 @@ export const post = async (
 
   return result;
 };
+
+export const deleteReq = async (path: string) => {
+  const options = { method: 'DELETE' };
+  await fetch(url(path), options);
+
+  return;
+};

@@ -1,6 +1,11 @@
 import { FC } from 'react';
 
-import { Close, LocationOnOutlined, NotesOutlined } from '@mui/icons-material';
+import {
+  Close,
+  DeleteOutlineOutlined,
+  LocationOnOutlined,
+  NotesOutlined,
+} from '@mui/icons-material';
 import {
   Dialog,
   DialogActions,
@@ -23,7 +28,7 @@ import { useCurrentScheduleAction } from '@/hooks/useCurrentScheduleAction';
 import { useCurrentScheduleState } from '@/hooks/useCurrentScheduleState';
 
 const CurrentScheduleDialog: FC = () => {
-  const { handleCloseDialog } = useCurrentScheduleAction();
+  const { handleCloseDialog, handleDeleteForm } = useCurrentScheduleAction();
   const currentSchedule = useCurrentScheduleState();
 
   return (
@@ -36,6 +41,12 @@ const CurrentScheduleDialog: FC = () => {
       >
         <DialogActions>
           <div style={styledCloseButton}>
+            <IconButton
+              onClick={() => handleDeleteForm(currentSchedule.current.id)}
+              size="small"
+            >
+              <DeleteOutlineOutlined />
+            </IconButton>
             <IconButton onClick={handleCloseDialog} size="small">
               <Close />
             </IconButton>
