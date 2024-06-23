@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { scheduleFormSlice } from '@/stores/scheduleForm';
 import { schedulesSlice } from '@/stores/schedules';
 import { Schedule, ScheduleItem } from '@/types/schedule';
-import { post } from '@/utils/api';
+import { storeScheduleRequest } from '@/utils/api';
 const { setLoading, addSchedule } = schedulesSlice.actions;
 const { openDialog, closeDialog, setValue } = scheduleFormSlice.actions;
 
@@ -18,8 +18,8 @@ export const useScheduleFormAction = () => {
   const handleStoreForm = async (schedule: Schedule) => {
     dispatch(setLoading());
 
-    const body = { ...schedule, date: schedule.date };
-    const result: ScheduleItem = await post('schedules', body);
+    const body: Schedule = { ...schedule, date: schedule.date };
+    const result: ScheduleItem = await storeScheduleRequest('schedules', body);
 
     dispatch(addSchedule(result));
     dispatch(closeDialog());

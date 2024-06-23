@@ -14,6 +14,10 @@ React + Redux を使用したカレンダーアプリケーション
 - Redux ToolKit
 - Material UI
 
+### BackEnd
+
+- TypeScript
+
 ## Components
 
 ### AddScheduleDialog

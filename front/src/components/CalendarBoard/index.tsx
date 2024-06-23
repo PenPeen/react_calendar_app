@@ -10,7 +10,8 @@ import { useFetchScheduleAction } from '@/hooks/useFetchScheduleAction';
 import { useScheduleFormAction } from '@/hooks/useScheduleFormAction';
 import { useSchedulesState } from '@/hooks/useSchedulesState';
 import { days } from '@/types';
-import { createCalendar, mapSchedulesToDate } from '@/utils/calendar';
+import { createCalendar } from '@/utils/calendar';
+import { mapSchedulesToDate } from '@/utils/schedule';
 
 const CalendarBoard: FC = () => {
   const { handleOpenDialog } = useScheduleFormAction();
