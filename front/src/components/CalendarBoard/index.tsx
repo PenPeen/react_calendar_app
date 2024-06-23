@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux';
 
 import { styledContainer, styledGrid, styledDays } from './styles';
 import CalendarElement from '../CalendarElement';
-import { days } from '../types';
 
 import { useScheduleForm } from '@/hooks/useScheduleForm';
 import { RootState, CalendarState } from '@/stores';
+import { days } from '@/types';
 import { ScheduleItem } from '@/types/schedule';
 import { createCalendar, mapSchedulesToDate } from '@/utils/calendar';
 
