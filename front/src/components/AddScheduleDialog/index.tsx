@@ -16,21 +16,17 @@ import {
   TextField,
 } from '@mui/material';
 import dayjs from 'dayjs';
-import { useSelector } from 'react-redux';
 
 import { StyledDatePicker, StyledInput, styledTextField } from './styles';
 
-import { useScheduleForm } from '@/hooks/useScheduleForm';
-import { RootState } from '@/stores';
-import { ScheduleState } from '@/stores/scheduleForm';
+import { useScheduleFormAction } from '@/hooks/useScheduleFormAction';
+import { useScheduleFormState } from '@/hooks/useScheduleFormState';
 
 const AddScheduleDialog: FC = () => {
-  const scheduleForm = useSelector<RootState, ScheduleState>(
-    (state) => state.scheduleForm,
-  );
+  const scheduleForm = useScheduleFormState();
 
   const { handleCloseDialog, handleSetValue, handleStoreForm } =
-    useScheduleForm();
+    useScheduleFormAction();
 
   return (
     <Dialog

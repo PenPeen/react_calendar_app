@@ -1,26 +1,22 @@
 import { FC } from 'react';
 
 import { ImageList, Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
 
 import { styledContainer, styledGrid, styledDays } from './styles';
 import CalendarElement from '../CalendarElement';
 
-import { useScheduleForm } from '@/hooks/useScheduleForm';
-import { RootState, CalendarState } from '@/stores';
+import { useCurrentCalendarState } from '@/hooks/useCurrentCalendarState';
+import { useFetchScheduleAction } from '@/hooks/useFetchScheduleAction';
+import { useScheduleFormAction } from '@/hooks/useScheduleFormAction';
+import { useSchedulesState } from '@/hooks/useSchedulesState';
 import { days } from '@/types';
-import { ScheduleItem } from '@/types/schedule';
 import { createCalendar, mapSchedulesToDate } from '@/utils/calendar';
 
 const CalendarBoard: FC = () => {
-  const { handleOpenDialog } = useScheduleForm();
-
-  const currentCalendar = useSelector<RootState, CalendarState>(
-    (state) => state.calendar,
-  );
-  const schedules = useSelector<RootState, ScheduleItem[]>(
-    (state) => state.schedules.items,
-  );
+  const { handleOpenDialog } = useScheduleFormAction();
+  const schedules = useSchedulesState();
+  const currentCalendar = useCurrentCalendarState();
+  useFetchScheduleAction(currentCalendar);
 
   const calendar = mapSchedulesToDate(
     createCalendar(35, currentCalendar),

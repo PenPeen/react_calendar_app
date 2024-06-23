@@ -10,7 +10,6 @@ import {
   Typography,
 } from '@mui/material';
 import dayjs from 'dayjs';
-import { useSelector } from 'react-redux';
 
 import {
   mainBlock,
@@ -20,16 +19,12 @@ import {
   tbtlBlock,
 } from './styles';
 
-import { useCurrentSchedule } from '@/hooks/useCurrentSchedule';
-import { RootState } from '@/stores';
-import { CurrentScheduleState } from '@/stores/currentSchedule';
+import { useCurrentScheduleAction } from '@/hooks/useCurrentScheduleAction';
+import { useCurrentScheduleState } from '@/hooks/useCurrentScheduleState';
 
 const CurrentScheduleDialog: FC = () => {
-  const { handleCloseDialog } = useCurrentSchedule();
-
-  const currentSchedule = useSelector<RootState, CurrentScheduleState>(
-    (state) => state.currentSchedule,
-  );
+  const { handleCloseDialog } = useCurrentScheduleAction();
+  const currentSchedule = useCurrentScheduleState();
 
   return (
     <>

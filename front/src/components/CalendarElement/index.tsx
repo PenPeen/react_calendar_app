@@ -3,7 +3,6 @@ import { FC } from 'react';
 import { ImageListItem, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import dayjs from 'dayjs';
-import { useSelector } from 'react-redux';
 
 import {
   StyledScheduleContainer,
@@ -13,8 +12,8 @@ import {
 } from './styles';
 import Schedule from '../Schedule';
 
-import { RootState } from '@/stores';
-import { ScheduleItem } from '@/types/schedule';
+import { useCurrentCalendarState } from '@/hooks/useCurrentCalendarState';
+import { ScheduleItem } from '@/types';
 import { isCurrentMonth, isFirstDay, isToday } from '@/utils/calendar';
 
 type Props = {
@@ -23,9 +22,7 @@ type Props = {
 };
 
 const CalendarElement: FC<Props> = ({ day, schedules }) => {
-  const currentMonth = useSelector<RootState, number>(
-    (state) => state.calendar.month,
-  );
+  const { month: currentMonth } = useCurrentCalendarState();
 
   const format = isFirstDay(day) ? 'M月D日' : 'D';
   const textColor = isCurrentMonth(day, currentMonth)
