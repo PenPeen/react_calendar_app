@@ -1,7 +1,7 @@
 import { DatePicker } from '@mui/x-date-pickers';
 import styled from 'styled-components';
 
-export const styledTextField = {
+export const styledTextField: React.CSSProperties = {
   margin: '4px 0',
 };
 

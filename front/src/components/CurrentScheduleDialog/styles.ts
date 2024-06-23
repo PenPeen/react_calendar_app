@@ -6,7 +6,7 @@ export const styledCloseButton: React.CSSProperties = {
   textAlign: 'right',
 };
 
-export const styledBox = {
+export const styledBox: React.CSSProperties = {
   backgroundColor: 'rgb(121, 134, 203)',
   width: '16px',
   height: '16px',
