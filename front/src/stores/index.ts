@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import calendarSlice from './calendar';
+import { currentScheduleSlice } from './currentSchedule';
 import { scheduleFormSlice } from './scheduleForm';
 import { schedulesSlice } from './schedules';
 
@@ -9,6 +10,7 @@ const store = configureStore({
     calendar: calendarSlice.reducer,
     scheduleForm: scheduleFormSlice.reducer,
     schedules: schedulesSlice.reducer,
+    currentSchedule: currentScheduleSlice.reducer,
   },
 });
 
