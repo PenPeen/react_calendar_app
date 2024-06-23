@@ -5,7 +5,13 @@ import { grey } from '@mui/material/colors';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 
-import { styledDate, styledElement, styledToday } from './styles';
+import {
+  StyledScheduleContainer,
+  styledDate,
+  styledElement,
+  styledToday,
+} from './styles';
+import Schedule from '../Schedule';
 
 import { RootState } from '@/stores';
 import { ScheduleItem } from '@/types/schedule';
@@ -16,7 +22,7 @@ type Props = {
   schedules: ScheduleItem[];
 };
 
-const CalendarElement: FC<Props> = ({ day }) => {
+const CalendarElement: FC<Props> = ({ day, schedules }) => {
   const currentMonth = useSelector<RootState, number>(
     (state) => state.calendar.month,
   );
@@ -38,6 +44,23 @@ const CalendarElement: FC<Props> = ({ day }) => {
         <span style={isToday(day) ? styledToday : {}}>
           {day.format(format)}
         </span>
+        <StyledScheduleContainer>
+          {schedules.map((schedule) => {
+            return (
+              <Schedule
+                key={schedule.id}
+                schedule={schedule}
+                custom={{
+                  width: '85%',
+                  $padding: '1px 8px',
+                  $margin: '2px auto',
+                  fontSize: '14px',
+                  $borderRadius: '4px',
+                }}
+              />
+            );
+          })}
+        </StyledScheduleContainer>
       </Typography>
     </ImageListItem>
   );
