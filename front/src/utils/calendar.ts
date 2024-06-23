@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 
 import { CalendarState } from '@/stores';
-import { ScheduleItem } from '@/types/schedule';
 
 dayjs.locale('ja');
 
@@ -61,15 +60,3 @@ export const formatMonth = (date: dayjs.Dayjs): CalendarState => ({
   month: date.month() + 1,
   year: date.year(),
 });
-
-export const mapSchedulesToDate = (
-  calendar: dayjs.Dayjs[],
-  schedules: ScheduleItem[],
-) => {
-  return calendar.map((date) => ({
-    date,
-    schedules: schedules.filter((schedule) =>
-      isSameDay(dayjs(schedule.date), date),
-    ),
-  }));
-};
