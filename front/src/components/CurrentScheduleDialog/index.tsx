@@ -9,9 +9,16 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
+import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 
-import { styledBox, styledCloseButton } from './styles';
+import {
+  mainBlock,
+  styledBox,
+  styledCloseButton,
+  subBlock,
+  tbtlBlock,
+} from './styles';
 
 import { useCurrentSchedule } from '@/hooks/useCurrentSchedule';
 import { RootState } from '@/stores';
@@ -43,30 +50,31 @@ const CurrentScheduleDialog: FC = () => {
         <DialogContent>
           {currentSchedule.current && (
             <>
-              <div>
-                <Grid
-                  container
-                  spacing={1}
-                  alignItems="center"
-                  justifyContent="space-between"
-                >
-                  <Grid item>
-                    <span style={styledBox}></span>
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Typography variant="h5" component="h2">
-                      {currentSchedule.current.title}
-                    </Typography>
-                    <Typography color="textSecondary">
-                      {/* TODO: フォーマットが必要 */}
-                      {currentSchedule.current.date}
-                    </Typography>
-                  </Grid>
+              <Grid
+                style={mainBlock}
+                container
+                spacing={1}
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Grid item>
+                  <span style={styledBox}></span>
                 </Grid>
-              </div>
+                <Grid item xs={10}>
+                  <Typography variant="h5" component="h2" style={tbtlBlock}>
+                    {currentSchedule.current.title}
+                  </Typography>
+                  <Typography color="textSecondary">
+                    {dayjs(currentSchedule.current.date).format(
+                      'M月 D日  HH:mm',
+                    )}
+                  </Typography>
+                </Grid>
+              </Grid>
 
               {currentSchedule.current.location && (
                 <Grid
+                  style={subBlock}
                   container
                   spacing={1}
                   alignItems="center"
@@ -82,6 +90,7 @@ const CurrentScheduleDialog: FC = () => {
               )}
               {currentSchedule.current.description && (
                 <Grid
+                  style={subBlock}
                   container
                   spacing={1}
                   alignItems="center"

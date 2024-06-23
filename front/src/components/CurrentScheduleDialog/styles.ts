@@ -1,3 +1,7 @@
+export const mainBlock = { marginBottom: '20px' };
+export const subBlock = { marginBottom: '10px' };
+export const tbtlBlock = { marginBottom: '4px' };
+
 export const styledCloseButton: React.CSSProperties = {
   textAlign: 'right',
 };
