@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 export const styledElement = {
   borderRight: '1px solid #ccc',
   borderBottom: '1px solid #ccc',
@@ -17,3 +19,12 @@ export const styledToday = {
   color: '#fff',
   borderRadius: '50%',
 };
+
+export const StyledScheduleContainer = styled.div`
+  overflow: scroll;
+  height: calc(18vh - 40px);
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+`;
