@@ -1,12 +1,12 @@
 # React カレンダーアプリケーション
 
-# 概要
+## 概要
 
 React + Redux を使用したカレンダーアプリケーション
 
-# Technologies Used
+## Technologies Used
 
-## FrontEnd
+### FrontEnd
 
 - TypeScript
 - React
@@ -16,53 +16,53 @@ React + Redux を使用したカレンダーアプリケーション
 
 ## Components
 
-- AddScheduleDialog
+### AddScheduleDialog
 
 予定を登録するためのダイアログ
 
-![AddScheduleDialog](https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/AddScheduleDialog.png?raw=true "AddScheduleDialog")
+<img src="https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/AddScheduleDialog.png?raw=true" alt="AddScheduleDialog" width="400"/>
 
-- CalendarBoard
+### CalendarBoard
 
 一月分の予定を一覧表示する
 
-![CalendarBoard](https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/CalendarBoard.png?raw=true "CalendarBoard")
+<img src="https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/CalendarBoard.png?raw=true" alt="CalendarBoard" width="600"/>
 
-- CalendarElement
+### CalendarElement
 
 1 日の予定を表示する
 
-![CalendarElement](https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/CalendarElement.png?raw=true "CalendarElement")
+<img src="https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/CalendarElement.png?raw=true" alt="CalendarElement" width="200"/>
 
-- CurrentScheduleDialog
+### CurrentScheduleDialog
 
 選択した予定の詳細を表示するダイアログ
 
-![CurrentScheduleDialog](https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/CurrentScheduleDialog.png?raw=true "CurrentScheduleDialog")
+<img src="https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/CurrentScheduleDialog.png?raw=true" alt="CurrentScheduleDialog" width="400"/>
 
-- Navigation
+### Navigation
 
 ナビゲーション
 
-![Navigation](https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/Navigation.png?raw=true "Navigation")
+<img src="https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/Navigation.png?raw=true" alt="Navigation" width="600"/>
 
-- Schedule
+### Schedule
 
 一覧上での予定表示
 
-![Schedule](https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/Schedule.png?raw=true "Schedule")
+<img src="https://github.com/PenPeen/react_calendar_app/blob/image/front/public/images/Schedule.png?raw=true" alt="Schedule" width="200"/>
 
-## Infra
+## Infrastructure
 
 Docker を使用
 
-### コンテナ
+### Containers
 
-- nginx: web サーバー
-- api: 予定を登録するためのエンドポイントを定義
-- db: 予定を管理するための DB
+- **nginx**: Web サーバー
+- **api**: 予定を登録するための API エンドポイント
+- **db**: 予定を管理するためのデータベース
 
-# ディレクトリ構成
+## ディレクトリ構成
 
 ディレクトリ構成は [bulletproof-react](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md) に準拠する形とする
 
