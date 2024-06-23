@@ -24,5 +24,12 @@ export const schedulesSlice = createSlice({
     removeSchedule(state, action: PayloadAction<number>) {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
+    fetchSchedule(state, action: PayloadAction<ScheduleItem[]>) {
+      state.items = action.payload;
+      state.isLoading = false;
+    },
+    setLoading(state) {
+      state.isLoading = true;
+    },
   },
 });
