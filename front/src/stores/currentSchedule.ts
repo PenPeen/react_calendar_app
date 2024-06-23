@@ -2,12 +2,12 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { Schedule } from '@/types/schedule';
 
-type ScheduleState = {
+export interface CurrentScheduleState {
   current: Schedule;
   isDialogOpen: boolean;
-};
+}
 
-const initialState: ScheduleState = {
+const initialState: CurrentScheduleState = {
   current: {
     title: '',
     description: '',
@@ -21,8 +21,8 @@ export const currentScheduleSlice = createSlice({
   name: 'currentSchedule',
   initialState,
   reducers: {
-    setItem(state, action: PayloadAction<object>) {
-      state.current = { ...state.current, ...action.payload };
+    setCurrent(state, action: PayloadAction<Schedule>) {
+      state.current = action.payload;
     },
     openDialog(state) {
       state.isDialogOpen = true;
