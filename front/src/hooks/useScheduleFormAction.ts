@@ -5,7 +5,7 @@ import { schedulesSlice } from '@/stores/schedules';
 import { Schedule } from '@/types/schedule';
 import { storeScheduleRequest } from '@/utils/api';
 const { setLoading, addSchedule } = schedulesSlice.actions;
-const { openDialog, closeDialog, setValue, editing, endEditing } =
+const { openDialog, closeDialog, setValue, editing } =
   scheduleFormSlice.actions;
 
 export const useScheduleFormAction = () => {
@@ -24,7 +24,6 @@ export const useScheduleFormAction = () => {
 
   const dispatchCloseDialog = () => {
     dispatch(closeDialog());
-    dispatch(endEditing());
   };
 
   const dispatchStoreForm = async (schedule: Schedule) => {
@@ -36,7 +35,6 @@ export const useScheduleFormAction = () => {
     dispatch(setLoading());
     dispatch(addSchedule(await request(schedule)));
     dispatch(closeDialog());
-    dispatch(endEditing());
   };
 
   const dispatchEditing = () => dispatch(editing());
