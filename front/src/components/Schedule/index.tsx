@@ -11,17 +11,17 @@ type Props = {
 };
 
 const Schedule: FC<Props> = ({ schedule, custom }) => {
-  const handleScheduleClick = (e: React.MouseEvent) => {
+  const dispatchScheduleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
 
-    handleSetCurrent(schedule);
-    handleOpenDialog();
+    dispatchSetCurrent(schedule);
+    dispatchOpenDialog();
   };
 
-  const { handleSetCurrent, handleOpenDialog } = useCurrentScheduleAction();
+  const { dispatchSetCurrent, dispatchOpenDialog } = useCurrentScheduleAction();
 
   return (
-    <StyledSchedule {...custom} onClick={(e) => handleScheduleClick(e)}>
+    <StyledSchedule {...custom} onClick={(e) => dispatchScheduleClick(e)}>
       {schedule.title}
     </StyledSchedule>
   );

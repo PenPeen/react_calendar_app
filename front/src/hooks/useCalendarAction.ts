@@ -8,17 +8,17 @@ const { setNextMonth, setPrevMonth, setDate } = calendarSlice.actions;
 
 export const useCalendar = () => {
   const dispatch = useDispatch();
-  const handlePrevMonth = () => dispatch(setPrevMonth());
-  const handleNextMonth = () => dispatch(setNextMonth());
-  const handleSetMonth = (date: dayjs.Dayjs | null) => {
+  const dispatchPrevMonth = () => dispatch(setPrevMonth());
+  const dispatchNextMonth = () => dispatch(setNextMonth());
+  const dispatchSetMonth = (date: dayjs.Dayjs | null) => {
     if (date) {
       dispatch(setDate(formatMonth(date)));
     }
   };
 
   return {
-    handlePrevMonth,
-    handleNextMonth,
-    handleSetMonth,
+    dispatchPrevMonth,
+    dispatchNextMonth,
+    dispatchSetMonth,
   };
 };

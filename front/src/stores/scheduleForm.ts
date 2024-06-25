@@ -32,12 +32,10 @@ export const scheduleFormSlice = createSlice({
     },
     closeDialog(state) {
       state.isDialogOpen = false;
+      state.isEditing = false;
     },
     editing(state) {
       state.isEditing = true;
-    },
-    endEditing(state) {
-      state.isEditing = false;
     },
   },
 });

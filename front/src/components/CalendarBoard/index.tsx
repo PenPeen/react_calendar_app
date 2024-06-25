@@ -14,7 +14,7 @@ import { createCalendar } from '@/utils/calendar';
 import { mapSchedulesToDate } from '@/utils/schedule';
 
 const CalendarBoard: FC = () => {
-  const { handleOpenDialog } = useScheduleFormAction();
+  const { dispatchOpenDialog } = useScheduleFormAction();
   const schedules = useSchedulesState();
   const currentCalendar = useCurrentCalendarState();
   useFetchScheduleAction(currentCalendar);
@@ -43,7 +43,7 @@ const CalendarBoard: FC = () => {
         {calendar.map(({ date, schedules }) => (
           <div
             key={date.toISOString()}
-            onClick={() => handleOpenDialog(date.toISOString())}
+            onClick={() => dispatchOpenDialog(date.toISOString())}
           >
             <CalendarElement day={date} schedules={schedules} />
           </div>
