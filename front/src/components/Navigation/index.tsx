@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { IconButton, Toolbar, Typography } from '@mui/material';
+import { IconButton, Toolbar, Tooltip, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 
 import {
@@ -40,12 +40,16 @@ const Navigation: FC = () => {
         >
           カレンダー
         </Typography>
-        <IconButton size="small" onClick={handlePrevMonth}>
-          <ArrowBackIos />
-        </IconButton>
-        <IconButton size="small" onClick={handleNextMonth}>
-          <ArrowForwardIos />
-        </IconButton>
+        <Tooltip title="前の月" placement="bottom">
+          <IconButton size="small" onClick={handlePrevMonth}>
+            <ArrowBackIos />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="次の月" placement="bottom">
+          <IconButton size="small" onClick={handleNextMonth}>
+            <ArrowForwardIos />
+          </IconButton>
+        </Tooltip>
         <StyledDatePicker
           value={calendarDate}
           onChange={handleSetMonth}
