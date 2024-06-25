@@ -7,6 +7,7 @@ import {
   NotesOutlined,
 } from '@mui/icons-material';
 import {
+  Box,
   Button,
   Dialog,
   DialogActions,
@@ -17,7 +18,13 @@ import {
 } from '@mui/material';
 import dayjs from 'dayjs';
 
-import { StyledDatePicker, StyledInput, styledTextField } from './styles';
+import {
+  StyledDatePicker,
+  StyledInput,
+  StyledValidationMessage,
+  styledTextField,
+} from './styles';
+import { isTitleInvalid } from './validate';
 
 import { useScheduleFormAction } from '@/hooks/useScheduleFormAction';
 import { useScheduleFormState } from '@/hooks/useScheduleFormState';
@@ -25,7 +32,7 @@ import { useScheduleFormState } from '@/hooks/useScheduleFormState';
 const AddScheduleDialog: FC = () => {
   const scheduleForm = useScheduleFormState();
 
-  const { handleCloseDialog, handleSetValue, handleStoreForm } =
+  const { handleCloseDialog, handleSetValue, handleStoreForm, handleEditing } =
     useScheduleFormAction();
 
   return (
@@ -41,12 +48,22 @@ const AddScheduleDialog: FC = () => {
         </IconButton>
       </DialogActions>
       <DialogContent>
-        <StyledInput
-          value={scheduleForm.form.title}
-          onChange={(e) => handleSetValue('title', e.target.value)}
-          placeholder="タイトルを追加"
-          autoFocus
-        />
+        <Box sx={{ mb: '32px' }}>
+          <StyledInput
+            value={scheduleForm.form.title}
+            onChange={(e) => handleSetValue('title', e.target.value)}
+            placeholder="タイトルを追加"
+            autoFocus
+            onBlur={handleEditing}
+          />
+          <div>
+            {isTitleInvalid(scheduleForm) && (
+              <StyledValidationMessage>
+                タイトルは必須です。
+              </StyledValidationMessage>
+            )}
+          </div>
+        </Box>
         <Grid
           container
           spacing={1}
@@ -112,6 +129,7 @@ const AddScheduleDialog: FC = () => {
           color="primary"
           variant="outlined"
           onClick={() => handleStoreForm(scheduleForm.form)}
+          disabled={isTitleInvalid(scheduleForm)}
         >
           保存
         </Button>
