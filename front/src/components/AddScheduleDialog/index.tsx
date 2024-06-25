@@ -15,6 +15,7 @@ import {
   Grid,
   IconButton,
   TextField,
+  Tooltip,
 } from '@mui/material';
 import dayjs from 'dayjs';
 
@@ -43,9 +44,11 @@ const AddScheduleDialog: FC = () => {
       fullWidth
     >
       <DialogActions>
-        <IconButton onClick={handleCloseDialog} size="small">
-          <Close />
-        </IconButton>
+        <Tooltip title="閉じる" placement="bottom">
+          <IconButton onClick={handleCloseDialog} size="small">
+            <Close />
+          </IconButton>
+        </Tooltip>
       </DialogActions>
       <DialogContent>
         <Box sx={{ mb: '32px' }}>
