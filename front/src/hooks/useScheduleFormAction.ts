@@ -20,6 +20,11 @@ export const useScheduleFormAction = () => {
     dispatch(endEditing());
   };
   const handleStoreForm = async (schedule: Schedule) => {
+    if (schedule.title === '') {
+      dispatch(editing());
+      return;
+    }
+
     dispatch(setLoading());
 
     const body: Schedule = { ...schedule, date: schedule.date };

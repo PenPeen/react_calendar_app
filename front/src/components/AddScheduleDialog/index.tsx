@@ -51,10 +51,13 @@ const AddScheduleDialog: FC = () => {
         <Box sx={{ mb: '32px' }}>
           <StyledInput
             value={scheduleForm.form.title}
-            onChange={(e) => handleSetValue('title', e.target.value)}
+            onChange={(e) => {
+              handleEditing();
+              handleSetValue('title', e.target.value);
+            }}
             placeholder="タイトルを追加"
             autoFocus
-            onBlur={handleEditing}
+            // onBlur={handleEditing}
           />
           <div>
             {isTitleInvalid(scheduleForm) && (
