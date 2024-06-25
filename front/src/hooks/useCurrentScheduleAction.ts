@@ -11,12 +11,12 @@ const { setLoading, removeSchedule: removeSchedule } = schedulesSlice.actions;
 export const useCurrentScheduleAction = () => {
   const dispatch = useDispatch();
 
-  const handleSetCurrent = (current: ScheduleItem) => {
+  const dispatchSetCurrent = (current: ScheduleItem) => {
     dispatch(setCurrent(current));
   };
-  const handleOpenDialog = () => dispatch(openDialog());
-  const handleCloseDialog = () => dispatch(closeDialog());
-  const handleDeleteForm = async (id: number) => {
+  const dispatchOpenDialog = () => dispatch(openDialog());
+  const dispatchCloseDialog = () => dispatch(closeDialog());
+  const dispatchDeleteForm = async (id: number) => {
     const result = window.confirm('本当によろしいですか？');
 
     if (result === true) {
@@ -28,9 +28,9 @@ export const useCurrentScheduleAction = () => {
   };
 
   return {
-    handleOpenDialog,
-    handleCloseDialog,
-    handleSetCurrent,
-    handleDeleteForm,
+    dispatchOpenDialog,
+    dispatchCloseDialog,
+    dispatchSetCurrent,
+    dispatchDeleteForm,
   };
 };

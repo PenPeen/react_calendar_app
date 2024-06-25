@@ -29,14 +29,15 @@ import { useCurrentScheduleAction } from '@/hooks/useCurrentScheduleAction';
 import { useCurrentScheduleState } from '@/hooks/useCurrentScheduleState';
 
 const CurrentScheduleDialog: FC = () => {
-  const { handleCloseDialog, handleDeleteForm } = useCurrentScheduleAction();
+  const { dispatchCloseDialog, dispatchDeleteForm } =
+    useCurrentScheduleAction();
   const currentSchedule = useCurrentScheduleState();
 
   return (
     <>
       <Dialog
         open={currentSchedule.isDialogOpen}
-        onClose={handleCloseDialog}
+        onClose={dispatchCloseDialog}
         maxWidth="xs"
         fullWidth
       >
@@ -44,14 +45,14 @@ const CurrentScheduleDialog: FC = () => {
           <div style={styledCloseButton}>
             <Tooltip title="削除" placement="bottom">
               <IconButton
-                onClick={() => handleDeleteForm(currentSchedule.current.id)}
+                onClick={() => dispatchDeleteForm(currentSchedule.current.id)}
                 size="small"
               >
                 <DeleteOutlineOutlined />
               </IconButton>
             </Tooltip>
             <Tooltip title="閉じる" placement="bottom">
-              <IconButton onClick={handleCloseDialog} size="small">
+              <IconButton onClick={dispatchCloseDialog} size="small">
                 <Close />
               </IconButton>
             </Tooltip>

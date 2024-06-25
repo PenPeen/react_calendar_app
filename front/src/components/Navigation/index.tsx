@@ -16,7 +16,8 @@ import { useCalendar } from '@/hooks/useCalendarAction';
 import { useCurrentCalendarState } from '@/hooks/useCurrentCalendarState';
 
 const Navigation: FC = () => {
-  const { handlePrevMonth, handleNextMonth, handleSetMonth } = useCalendar();
+  const { dispatchPrevMonth, dispatchNextMonth, dispatchSetMonth } =
+    useCalendar();
   const calendar = useCurrentCalendarState();
   const calendarDate = dayjs(new Date(calendar.year, calendar.month - 1));
 
@@ -41,18 +42,18 @@ const Navigation: FC = () => {
           カレンダー
         </Typography>
         <Tooltip title="前の月" placement="bottom">
-          <IconButton size="small" onClick={handlePrevMonth}>
+          <IconButton size="small" onClick={dispatchPrevMonth}>
             <ArrowBackIos />
           </IconButton>
         </Tooltip>
         <Tooltip title="次の月" placement="bottom">
-          <IconButton size="small" onClick={handleNextMonth}>
+          <IconButton size="small" onClick={dispatchNextMonth}>
             <ArrowForwardIos />
           </IconButton>
         </Tooltip>
         <StyledDatePicker
           value={calendarDate}
-          onChange={handleSetMonth}
+          onChange={dispatchSetMonth}
           format="YYYY年 M月"
           closeOnSelect={true}
         />

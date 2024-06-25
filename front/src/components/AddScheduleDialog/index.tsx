@@ -33,19 +33,23 @@ import { useScheduleFormState } from '@/hooks/useScheduleFormState';
 const AddScheduleDialog: FC = () => {
   const scheduleForm = useScheduleFormState();
 
-  const { handleCloseDialog, handleSetValue, handleStoreForm, handleEditing } =
-    useScheduleFormAction();
+  const {
+    dispatchCloseDialog,
+    dispatchSetValue,
+    dispatchStoreForm,
+    dispatchEditing,
+  } = useScheduleFormAction();
 
   return (
     <Dialog
       open={scheduleForm.isDialogOpen}
-      onClose={handleCloseDialog}
+      onClose={dispatchCloseDialog}
       maxWidth="xs"
       fullWidth
     >
       <DialogActions>
         <Tooltip title="閉じる" placement="bottom">
-          <IconButton onClick={handleCloseDialog} size="small">
+          <IconButton onClick={dispatchCloseDialog} size="small">
             <Close />
           </IconButton>
         </Tooltip>
@@ -55,12 +59,12 @@ const AddScheduleDialog: FC = () => {
           <StyledInput
             value={scheduleForm.form.title}
             onChange={(e) => {
-              handleEditing();
-              handleSetValue('title', e.target.value);
+              dispatchEditing();
+              dispatchSetValue('title', e.target.value);
             }}
             placeholder="タイトルを追加"
             autoFocus
-            // onBlur={handleEditing}
+            // onBlur={dispatchEditing}
           />
           <div>
             {isTitleInvalid(scheduleForm) && (
@@ -85,7 +89,7 @@ const AddScheduleDialog: FC = () => {
               value={dayjs(scheduleForm.form.date)}
               onChange={(e) => {
                 if (e && e.isValid()) {
-                  handleSetValue('date', e.toISOString());
+                  dispatchSetValue('date', e.toISOString());
                 }
               }}
             />
@@ -103,7 +107,7 @@ const AddScheduleDialog: FC = () => {
           <Grid item xs={10}>
             <TextField
               value={scheduleForm.form.location}
-              onChange={(e) => handleSetValue('location', e.target.value)}
+              onChange={(e) => dispatchSetValue('location', e.target.value)}
               style={styledTextField}
               fullWidth
               placeholder="場所を追加"
@@ -122,7 +126,7 @@ const AddScheduleDialog: FC = () => {
           <Grid item xs={10}>
             <TextField
               value={scheduleForm.form.description}
-              onChange={(e) => handleSetValue('description', e.target.value)}
+              onChange={(e) => dispatchSetValue('description', e.target.value)}
               style={styledTextField}
               fullWidth
               placeholder="説明を追加"
@@ -134,7 +138,7 @@ const AddScheduleDialog: FC = () => {
         <Button
           color="primary"
           variant="outlined"
-          onClick={() => handleStoreForm(scheduleForm.form)}
+          onClick={() => dispatchStoreForm(scheduleForm.form)}
           disabled={isTitleInvalid(scheduleForm)}
         >
           保存
