@@ -85,7 +85,7 @@ React + Redux を使用したカレンダーアプリケーション
 
 ## Infrastructure
 
-Docker を使用
+`Docker` を使用
 
 ### Containers
 
@@ -97,5 +97,5 @@ Docker を使用
 
 ディレクトリ構成は [bulletproof-react](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md) に準拠する形とする
 
-小規模アプリケーションのため、`AtomicDesign` は採用していない。
-コンポーネント毎にディレクトリを作成し、`index.tsx`, `styles.ts` を定義している
+- 小規模アプリケーションのため、`AtomicDesign` は採用していない。
+- コンポーネント毎にディレクトリを作成し、`index.tsx`, `styles.ts` を定義している
