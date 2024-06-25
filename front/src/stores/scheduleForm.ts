@@ -5,6 +5,7 @@ import { Schedule } from '@/types/schedule';
 export interface ScheduleState {
   form: Schedule;
   isDialogOpen: boolean;
+  isEditing: boolean;
 }
 
 const initialState: ScheduleState = {
@@ -15,6 +16,7 @@ const initialState: ScheduleState = {
     location: '',
   },
   isDialogOpen: false,
+  isEditing: false,
 };
 
 export const scheduleFormSlice = createSlice({
@@ -30,6 +32,12 @@ export const scheduleFormSlice = createSlice({
     },
     closeDialog(state) {
       state.isDialogOpen = false;
+    },
+    editing(state) {
+      state.isEditing = true;
+    },
+    endEditing(state) {
+      state.isEditing = false;
     },
   },
 });
