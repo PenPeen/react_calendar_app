@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-export const styledElement = {
+export const styledElement: React.CSSProperties = {
   borderRight: '1px solid #ccc',
   borderBottom: '1px solid #ccc',
   height: '18vh',
 };
 
-export const styledDate = {
+export const styledDate: React.CSSProperties = {
   padding: '5px 0',
   height: '24px',
 };
 
-export const styledToday = {
+export const styledToday: React.CSSProperties = {
   display: 'inline-block',
   lineHeight: '24px',
   width: '24px',

@@ -12,6 +12,7 @@ import {
   DialogContent,
   Grid,
   IconButton,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import dayjs from 'dayjs';
@@ -41,15 +42,19 @@ const CurrentScheduleDialog: FC = () => {
       >
         <DialogActions>
           <div style={styledCloseButton}>
-            <IconButton
-              onClick={() => handleDeleteForm(currentSchedule.current.id)}
-              size="small"
-            >
-              <DeleteOutlineOutlined />
-            </IconButton>
-            <IconButton onClick={handleCloseDialog} size="small">
-              <Close />
-            </IconButton>
+            <Tooltip title="削除" placement="bottom">
+              <IconButton
+                onClick={() => handleDeleteForm(currentSchedule.current.id)}
+                size="small"
+              >
+                <DeleteOutlineOutlined />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="閉じる" placement="bottom">
+              <IconButton onClick={handleCloseDialog} size="small">
+                <Close />
+              </IconButton>
+            </Tooltip>
           </div>
         </DialogActions>
 

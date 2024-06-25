@@ -1,12 +1,16 @@
 import { DatePicker } from '@mui/x-date-pickers';
 import styled from 'styled-components';
 
-export const styledToolbar = {
+export const styledToolbar: React.CSSProperties = {
   padding: '0',
 };
 
-export const styledTypography = {
+export const styledTypography: React.CSSProperties = {
   margin: '0 30px 0 10px',
+};
+
+export const styledAppImage: React.CSSProperties = {
+  marginLeft: 'auto',
 };
 
 export const StyledDatePicker = styled(DatePicker)`
@@ -20,7 +24,3 @@ export const StyledDatePicker = styled(DatePicker)`
     border-radius: 0;
   }
 `;
-
-export const styledAppImage = {
-  marginLeft: 'auto',
-};

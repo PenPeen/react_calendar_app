@@ -1,11 +1,15 @@
 import { Connection, createConnection, QueryOptions } from "mysql2";
 
+/**
+ * データベース接続を管理するシングルトンクラス。
+ * このクラスは一度だけインスタンス化され、アプリケーション全体で共有される。
+ */
 export default class DB {
   public con?: Connection;
   private retryCount: number = 0;
 
   /**
-   * singleton（＝一回だけしかインスタンスを生成できない）
+   * 外部からのインスタンス化を防ぐためprivateで定義。
    */
   private static db?: DB;
   private constructor() {}
@@ -19,7 +23,8 @@ export default class DB {
   }
 
   /**
-   * DBへの接続を行う
+   * データベースへの接続試行。
+   * 失敗した場合はリトライする。
    */
   async connect() {
     this.retryCount++;
@@ -38,9 +43,10 @@ export default class DB {
   }
 
   /**
-   * `mysql.query`をpromiseで扱えるようにラップしたもの
-   * @param query SQLクエリ
-   * @param values SQLのplaceholderを与える配列
+   * SQLを実行する。
+   * @param {string} query - 実行するSQLクエリ
+   * @param {any[]} [values] - SQLクエリのプレースホルダーに適用される値
+   * @returns {Promise<T>} クエリ結果を返すプロミス
    */
   query<T>(query: string, values?: any): Promise<T> {
     return new Promise((resolve, reject) => {
@@ -57,8 +63,8 @@ export default class DB {
   }
 
   /**
-   * コネクション作成のための関数
-   * Promiseでコネクションを作成
+   * 新しいデータベース接続を非同期で作成。
+   * @returns {Promise<Connection>} 新しいコネクションオブジェクトを返すプロミス
    */
   private createConnection(): Promise<Connection> {
     return new Promise((resolve, reject) => {

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { CalendarState } from '@/stores';
 import { schedulesSlice } from '@/stores/schedules';
-import { get } from '@/utils/api';
+import { fetchScheduleItemsRequest } from '@/utils/api';
 const { setLoading, fetchSchedule } = schedulesSlice.actions;
 
 export const useFetchScheduleAction = (currentCalendar: CalendarState) => {
@@ -14,7 +14,7 @@ export const useFetchScheduleAction = (currentCalendar: CalendarState) => {
     dispatch(setLoading());
 
     const fetchAsyncSchedule = async () => {
-      const currentSchedules = await get(
+      const currentSchedules = await fetchScheduleItemsRequest(
         `schedules?month=${currentCalendar.month}&year=${currentCalendar.year}`,
       );
 
