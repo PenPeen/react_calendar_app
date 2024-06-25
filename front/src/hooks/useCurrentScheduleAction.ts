@@ -17,10 +17,14 @@ export const useCurrentScheduleAction = () => {
   const handleOpenDialog = () => dispatch(openDialog());
   const handleCloseDialog = () => dispatch(closeDialog());
   const handleDeleteForm = async (id: number) => {
-    dispatch(setLoading());
-    await removeScheduleRequest(`schedules/${id}`);
-    dispatch(removeSchedule(id));
-    dispatch(closeDialog());
+    const result = window.confirm('本当によろしいですか？');
+
+    if (result === true) {
+      dispatch(setLoading());
+      await removeScheduleRequest(`schedules/${id}`);
+      dispatch(removeSchedule(id));
+      dispatch(closeDialog());
+    }
   };
 
   return {
