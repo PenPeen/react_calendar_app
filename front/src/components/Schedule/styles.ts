@@ -10,7 +10,6 @@ export type StyleProps = {
   $borderRadius?: string;
 };
 
-// FIXME: 数値のみ入力された場合、表示欄が横伸びしてしまう
 export const StyledSchedule = styled.div<StyleProps>`
   width: ${(props) => props.width || '100%'};
   background-color: ${(props) =>
@@ -26,4 +25,5 @@ export const StyledSchedule = styled.div<StyleProps>`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  word-break: break-all;
 `;
