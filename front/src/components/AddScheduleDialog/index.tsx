@@ -25,7 +25,7 @@ import {
   StyledValidationMessage,
   styledTextField,
 } from './styles';
-import { isTitleInvalid } from './validate';
+import { isContainsEmoji, isFormInvalid, isTitleInvalid } from './validate';
 
 import { useScheduleFormAction } from '@/hooks/useScheduleFormAction';
 import { useScheduleFormState } from '@/hooks/useScheduleFormState';
@@ -73,6 +73,13 @@ const AddScheduleDialog: FC = () => {
               </StyledValidationMessage>
             )}
           </div>
+          <div>
+            {isContainsEmoji(scheduleForm.form.title) && (
+              <StyledValidationMessage>
+                絵文字は使用できません。
+              </StyledValidationMessage>
+            )}
+          </div>
         </Box>
         <Grid
           container
@@ -93,6 +100,13 @@ const AddScheduleDialog: FC = () => {
                 }
               }}
             />
+            <div>
+              {isContainsEmoji(scheduleForm.form.date) && (
+                <StyledValidationMessage>
+                  絵文字は使用できません。
+                </StyledValidationMessage>
+              )}
+            </div>
           </Grid>
         </Grid>
         <Grid
@@ -112,6 +126,13 @@ const AddScheduleDialog: FC = () => {
               fullWidth
               placeholder="場所を追加"
             />
+            <div>
+              {isContainsEmoji(scheduleForm.form.location) && (
+                <StyledValidationMessage>
+                  絵文字は使用できません。
+                </StyledValidationMessage>
+              )}
+            </div>
           </Grid>
         </Grid>
         <Grid
@@ -131,6 +152,13 @@ const AddScheduleDialog: FC = () => {
               fullWidth
               placeholder="説明を追加"
             />
+            <div>
+              {isContainsEmoji(scheduleForm.form.description) && (
+                <StyledValidationMessage>
+                  絵文字は使用できません。
+                </StyledValidationMessage>
+              )}
+            </div>
           </Grid>
         </Grid>
       </DialogContent>
@@ -139,7 +167,7 @@ const AddScheduleDialog: FC = () => {
           color="primary"
           variant="outlined"
           onClick={() => dispatchStoreForm(scheduleForm.form)}
-          disabled={isTitleInvalid(scheduleForm)}
+          disabled={isFormInvalid(scheduleForm)}
         >
           保存
         </Button>
